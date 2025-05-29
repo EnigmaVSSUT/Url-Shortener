@@ -1,40 +1,45 @@
-import express from "express"
-import dotenv from "dotenv"
-import connectDB from "./src/config/mongo.config.js"
-import shortUrl from "./src/routes/shortUrl.routes.js"
-import { redirectFromShortUrl } from "./src/controller/shortUrl.controller.js"
-import { errorHandler } from "./src/utils/errorHandler.js"
-import cors from "cors" // aloow cross server access in the network
-import authRoutes from "./src/routes/auth.routes.js"
-import { attachUser } from "./src/utils/attachUser.js"
-import cookieParser from "cookie-parser"
-import userRoutes from "./src/routes/user.route.js"
+import express from "express";
+import dotenv from "dotenv";
+import connectDB from "./src/config/mongo.config.js";
+import shortUrl from "./src/routes/shortUrl.routes.js";
+import { redirectFromShortUrl } from "./src/controller/shortUrl.controller.js";
+import { errorHandler } from "./src/utils/errorHandler.js";
+import cors from "cors"; // aloow cross server access in the network
+import authRoutes from "./src/routes/auth.routes.js";
+import { attachUser } from "./src/utils/attachUser.js";
+import cookieParser from "cookie-parser";
+import userRoutes from "./src/routes/user.route.js";
 
-dotenv.config("./.env")
+dotenv.config("./.env");
 
-const app = express()
-app.use(cors({
-    origin: 'shortit-seven.vercel.app',
-    credentials: true
-}))
+const app = express();
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://shortit-seven.vercel.app", 
+    ],
+    credentials: true,
+  })
+);
 
-app.use(express.json())
-app.use(express.urlencoded({extended:true}))
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.use(cookieParser())
-app.use(attachUser)
+app.use(cookieParser());
+app.use(attachUser);
 
-app.get("/",(req,res)=>{
-    res.send("getting request")
-})
-app.use("/api/create",shortUrl)
-app.use("/api/auth",authRoutes)
-app.get("/:shorturl",redirectFromShortUrl)
-app.use("/api/user",userRoutes)
+app.get("/", (req, res) => {
+  res.send("getting request");
+});
+app.use("/api/create", shortUrl);
+app.use("/api/auth", authRoutes);
+app.get("/:shorturl", redirectFromShortUrl);
+app.use("/api/user", userRoutes);
 
-app.use(errorHandler)
+app.use(errorHandler);
 
-app.listen(5000,()=>{
-    connectDB()
-    console.log("listening to port 5000",);
-})
+app.listen(5000, () => {
+  connectDB();
+  console.log("listening to port 5000");
+});
