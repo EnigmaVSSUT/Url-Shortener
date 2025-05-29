@@ -29,6 +29,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(attachUser);
 
+app.listen(5000, () => {
+  connectDB();
+  console.log("listening to port 5000");
+});
+
 app.get("/", (req, res) => {
   res.send("getting request");
 });
@@ -39,7 +44,3 @@ app.use("/api/user", userRoutes);
 
 app.use(errorHandler);
 
-app.listen(5000, () => {
-  connectDB();
-  console.log("listening to port 5000");
-});
