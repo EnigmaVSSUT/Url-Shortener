@@ -64,13 +64,13 @@ const UserUrls = () => {
                 </p>
 
                 <a
-                  href={`http://localhost:5000/${urlObj.shortUrl}`}
+                  href={`https://url-shortener-chi-two.vercel.app/${urlObj.shortUrl}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 font-semibold hover:underline break-all"
                 >
                   <span className="font-medium text-gray-700">Short URL:</span>{" "}
-                  {`http://localhost:5000/${urlObj.shortUrl}`}
+                  {`https://url-shortener-chi-two.vercel.app/${urlObj.shortUrl}`}
                 </a>
               </div>
 

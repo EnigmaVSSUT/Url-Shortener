@@ -1,7 +1,7 @@
 import axios, { isAxiosError } from "axios";
 
 const axiosInstance = axios.create({
-    baseURL: "http://localhost:5000",
+    baseURL: "https://url-shortener-chi-two.vercel.app",
     timeout: 10000,
     withCredentials: true
 });
