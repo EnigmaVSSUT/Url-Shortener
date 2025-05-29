@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
-import { Copy } from 'lucide-react';
-import HomePage from './pages/HomePage';
+import { Outlet } from "@tanstack/react-router";
+import Navbar from "./components/Navbar";
 
 export default function UrlShortener() {
   return (
-    <HomePage/>
+    <>
+      <Navbar />
+      <Outlet />
+    </>
   );
 }

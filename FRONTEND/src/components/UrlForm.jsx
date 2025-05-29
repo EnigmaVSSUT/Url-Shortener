@@ -1,21 +1,25 @@
-import React, { useState } from "react";
-import axios from "axios";
+import { useState } from "react";
 import { Copy, Check } from "lucide-react";
-import { useMutation, useQuery } from "@tanstack/react-query";
 import { createShortUrl } from "../api/shortUrl.api";
+import { useSelector } from "react-redux";
+import { queryClient } from '../main'
 
 const UrlForm = () => {
   const [url, setUrl] = useState("");
   const [shortUrl, setShortUrl] = useState(null);
   const [copied, setCopied] = useState(false);
+  const [customUrl, setCustomUrl] = useState("");
+
+  const {isAuthenticated} = useSelector((state) => state.auth);
 
   const handleUrlSubmit = async (e) => {
     e.preventDefault();
     if (!url.trim()) return;
     try {
-      const data = createShortUrl(url);
+      const data = await createShortUrl(url, customUrl);
       setShortUrl(data);
       setUrl("");
+      queryClient.invalidateQueries({ queryKey: ["shortUrls"] });
     } catch (err) {
       console.error("Error generating short URL:", err);
     }
@@ -42,6 +46,16 @@ const UrlForm = () => {
           className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
         />
 
+        {isAuthenticated && (
+        <input
+          type="text"
+          placeholder="Enter custom alias (optional)"
+          value={customUrl}
+          onChange={(e) => setCustomUrl(e.target.value)}
+          className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+        />
+      )}
+        
         <button
           type="submit"
           className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition-all duration-300"

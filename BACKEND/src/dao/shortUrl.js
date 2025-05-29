@@ -20,3 +20,7 @@ export const getShortUrl = async (shorturl) => {
   const url = await urlSchema.findOne({ shortUrl: shorturl });
   return url;
 };
+
+export const checkCustomShortUrl = async (customShortUrl) => {
+  return await urlSchema.findOne({ shortUrl: customShortUrl });
+};

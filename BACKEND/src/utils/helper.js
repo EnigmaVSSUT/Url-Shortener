@@ -7,7 +7,7 @@ export const generateNanoId = (length)=>{
 } 
 
 export const signToken = (payload) => {
-    return jsonWebToken.sign(payload, process.env.JWT_SECRET_KEY, {expiresIn: "5m"});
+    return jsonWebToken.sign(payload, process.env.JWT_SECRET_KEY, {expiresIn: "1h"});
 }
 
 export const verifyToken = (token) => {
