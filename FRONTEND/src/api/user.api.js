@@ -21,6 +21,8 @@ export const registerUser = async (name, email, password) => {
 
 export const logOutuser = async () => {
     const { data } = await axiosInstance.post("/api/auth/logout");
+    console.log(data);
+    
     return data;
 };
 

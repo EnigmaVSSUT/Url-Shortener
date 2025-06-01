@@ -1,17 +1,51 @@
-import React from "react";
-import UrlForm from "../components/UrlForm";
+import CallToAction from "../components/CallToAction.jsx";
+import Features from "../components/Features.jsx";
+import Footer from "../components/Footer.jsx";
+import UrlForm from "../components/urlForm.jsx";
+import Navbar from "../components/Navbar.jsx";
+import { useSelector } from "react-redux";
 
-const HomePage = () => {
+export default function HomePage() {
+  const isDark = useSelector((state) => state.theme.isDark);
+
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
-      <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-xl space-y-6">
-        <h1 className="text-2xl font-bold text-center text-gray-800">
-          URL Shortener
-        </h1>
-        <UrlForm/>
-      </div>
+    <div
+      className={`min-h-screen transition-colors duration-300 ${
+        isDark ? "bg-black text-green-400" : "bg-gray-50 text-gray-900"
+      }`}
+    >
+      <Navbar/>
+      <section
+        className={`py-12 sm:py-20 px-4 transition-colors ${
+          isDark ? "bg-gray-900" : "bg-white"
+        }`}
+      >
+        <div className="max-w-4xl mx-auto text-center">
+          <h1
+            className={`text-3xl sm:text-4xl md:text-6xl font-bold mb-6 ${
+              isDark ? "text-white" : "text-gray-900"
+            }`}
+          >
+            Shorten URLs with
+            <span className={`${isDark ? "text-green-400" : "text-blue-600"}`}>
+              {" "}
+              Lightning Speed
+            </span>
+          </h1>
+          <p
+            className={`text-lg sm:text-xl mb-8 sm:mb-12 max-w-2xl mx-auto ${
+              isDark ? "text-green-300" : "text-gray-600"
+            }`}
+          >
+            Transform long, complex URLs into short, shareable links. Track
+            clicks, analyze performance, and manage your links with ease.
+          </p>
+          <UrlForm />
+        </div>
+      </section>
+      <Features />
+      <CallToAction />
+      <Footer />
     </div>
   );
-};
-
-export default HomePage;
+}
