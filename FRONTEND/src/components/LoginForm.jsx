@@ -1,5 +1,4 @@
 import React, { use, useState } from "react";
-import axios from "axios";
 import { loginUSer } from "../api/user.api";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../store/slice/authSlice.js";

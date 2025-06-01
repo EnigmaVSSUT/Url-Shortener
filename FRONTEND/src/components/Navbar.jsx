@@ -2,7 +2,6 @@ import { Menu, Moon, Sun, X } from "lucide-react"
 import { Link } from "@tanstack/react-router";
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-// import { toggleTheme } from "../store/slice/themeSlice";
 import ThemeToggle from "./ThemeToggle";
 
 

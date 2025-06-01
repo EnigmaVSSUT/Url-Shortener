@@ -3,7 +3,7 @@ import RegisterForm from "../components/RegisterForm"
 import { useSelector } from "react-redux"
 import { Link2 } from "lucide-react"
 import ThemeToggle from "../components/ThemeToggle"
-import LoginForm from "../components/loginForm"
+import LoginForm from "../components/LoginForm"
 
 const AuthPage = () => {
   const [login, setLogin] = useState(true)

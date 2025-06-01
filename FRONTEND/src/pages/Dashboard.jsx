@@ -5,8 +5,8 @@ import DashboardStats from "../components/DashboardStats"
 import { useQuery } from "@tanstack/react-query"
 import { getAllUserUrls } from "../api/user.api"
 import { Plus, Link2 } from "lucide-react"
-import UserUrls from "../components/Userurls"
-import UrlForm from "../components/urlForm.jsx"
+import UrlForm from "../components/UrlForm.jsx"
+import UserUrls from "../components/Userurls.jsx"
 
 const Dashboard = () => {
   const isDark = useSelector((state) => state.theme.isDark)
