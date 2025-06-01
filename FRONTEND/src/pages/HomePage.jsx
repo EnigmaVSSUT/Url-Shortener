@@ -1,7 +1,7 @@
 import CallToAction from "../components/CallToAction.jsx";
 import Features from "../components/Features.jsx";
 import Footer from "../components/Footer.jsx";
-import UrlForm from "../components/urlForm.jsx";
+import UrlForm from "../components/UrlForm.jsx";
 import Navbar from "../components/Navbar.jsx";
 import { useSelector } from "react-redux";
 
