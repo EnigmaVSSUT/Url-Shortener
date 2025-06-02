@@ -10,7 +10,7 @@ import { attachUser } from "./src/utils/attachUser.js";
 import cookieParser from "cookie-parser";
 import userRoutes from "./src/routes/user.route.js";
 
-dotenv.config("./.env");
+dotenv.config({ path: "./.env" });
 
 const app = express();
 app.use(
