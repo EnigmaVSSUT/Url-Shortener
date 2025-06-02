@@ -17,7 +17,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://linksnap-six.vercel.app/", 
+      "https://linksnap-six.vercel.app", 
     ],
     credentials: true,
   })
