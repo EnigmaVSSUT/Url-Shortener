@@ -29,7 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(attachUser);
 
-connectDB();
+await connectDB();
 app.listen(process.env.PORT, () => {
   console.log(`listening to port ${process.env.PORT}`);
 });
