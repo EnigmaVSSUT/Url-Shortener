@@ -24,7 +24,7 @@ const UserUrls = () => {
   
 
   const handleCopy = (shortUrl) => {
-      const fullUrl = `http://localhost:5000/${shortUrl}`
+      const fullUrl = `https://linksnap-backend.vercel.app/${shortUrl}`
       navigator.clipboard.writeText(fullUrl)
     setCopiedUrl(shortUrl)
     setTimeout(() => setCopiedUrl(null), 2000)
@@ -168,7 +168,7 @@ const UserUrls = () => {
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center space-x-2">
                     <a
-                      href={`http://localhost:5000/${urlObj.shortUrl}`}
+                      href={`https://linksnap-backend.vercel.app/${urlObj.shortUrl}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className={`font-medium hover:underline ${
@@ -220,7 +220,7 @@ const UserUrls = () => {
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <a
-                  href={`http://localhost:5000/${urlObj.shortUrl}`}
+                  href={`https://linksnap-backend.vercel.app/${urlObj.shortUrl}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`font-medium text-sm hover:underline flex items-center space-x-1 ${
