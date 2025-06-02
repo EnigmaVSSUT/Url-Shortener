@@ -29,8 +29,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(attachUser);
 
+connectDB();
 app.listen(process.env.PORT, () => {
-  connectDB();
   console.log(`listening to port ${process.env.PORT}`);
 });
 
