@@ -1,19 +1,18 @@
-import { Menu, Moon, Sun, X } from "lucide-react"
+import { Menu, Moon, Sun, X } from "lucide-react";
 import { Link } from "@tanstack/react-router";
-import { useState } from "react"
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ThemeToggle from "./ThemeToggle";
 
+export default function Navbar() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-export default function Navbar  () {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-
-  const {isAuthenticated} = useSelector((state) => state.auth);
+  const { isAuthenticated } = useSelector((state) => state.auth);
   const isDark = useSelector((state) => state.theme.isDark);
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen)
-  }
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   return (
     <header
@@ -33,19 +32,29 @@ export default function Navbar  () {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className={`h-8 w-8 ${isDark ? "text-green-500" : "text-blue-600"}`}
+                className={`h-8 w-8 ${
+                  isDark ? "text-green-500" : "text-blue-600"
+                }`}
               >
                 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
                 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
               </svg>
-              <span className={`text-xl font-bold ${isDark ? "text-green-400" : "text-gray-900"}`}>LinkSnap</span>
+              <span
+                className={`text-xl font-bold ${
+                  isDark ? "text-green-400" : "text-gray-900"
+                }`}
+              >
+                LinkSnap
+              </span>
             </Link>
           </div>
           <nav className="hidden md:flex items-center space-x-8">
             <Link
               to="#features"
               className={`transition-colors ${
-                isDark ? "text-green-400 hover:text-green-300" : "text-gray-600 hover:text-gray-900"
+                isDark
+                  ? "text-green-400 hover:text-green-300"
+                  : "text-gray-600 hover:text-gray-900"
               }`}
             >
               Features
@@ -53,7 +62,9 @@ export default function Navbar  () {
             <Link
               to="#pricing"
               className={`transition-colors ${
-                isDark ? "text-green-400 hover:text-green-300" : "text-gray-600 hover:text-gray-900"
+                isDark
+                  ? "text-green-400 hover:text-green-300"
+                  : "text-gray-600 hover:text-gray-900"
               }`}
             >
               Pricing
@@ -61,13 +72,15 @@ export default function Navbar  () {
             <Link
               to="#about"
               className={`transition-colors ${
-                isDark ? "text-green-400 hover:text-green-300" : "text-gray-600 hover:text-gray-900"
+                isDark
+                  ? "text-green-400 hover:text-green-300"
+                  : "text-gray-600 hover:text-gray-900"
               }`}
             >
               About
             </Link>
 
-            <ThemeToggle/>
+            <ThemeToggle />
 
             <Link
               to={isAuthenticated ? `/dashboard` : `/auth`}
@@ -86,22 +99,34 @@ export default function Navbar  () {
             <button
               variant="ghost"
               size="sm"
-              onClick={()=>dispatch(toggleTheme())}
+              onClick={() => dispatch(toggleTheme())}
               className={`transition-colors ${
-                isDark ? "text-green-400 hover:text-green-300" : "text-gray-600 hover:text-gray-900"
+                isDark
+                  ? "text-green-400 hover:text-green-300"
+                  : "text-gray-600 hover:text-gray-900"
               }`}
             >
-              {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              {isDark ? (
+                <Sun className="h-4 w-4" />
+              ) : (
+                <Moon className="h-4 w-4" />
+              )}
             </button>
             <button
               variant="ghost"
               size="sm"
               onClick={toggleMobileMenu}
               className={`transition-colors ${
-                isDark ? "text-green-400 hover:text-green-300" : "text-gray-600 hover:text-gray-900"
+                isDark
+                  ? "text-green-400 hover:text-green-300"
+                  : "text-gray-600 hover:text-gray-900"
               }`}
             >
-              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {isMobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
             </button>
           </div>
         </div>
@@ -109,13 +134,17 @@ export default function Navbar  () {
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <div
-            className={`md:hidden py-4 border-t transition-colors ${isDark ? "border-green-900" : "border-gray-200"}`}
+            className={`md:hidden py-4 border-t transition-colors ${
+              isDark ? "border-green-900" : "border-gray-200"
+            }`}
           >
             <div className="flex flex-col space-y-4">
               <Link
                 to="#features"
                 className={`transition-colors ${
-                  isDark ? "text-green-400 hover:text-green-300" : "text-gray-600 hover:text-gray-900"
+                  isDark
+                    ? "text-green-400 hover:text-green-300"
+                    : "text-gray-600 hover:text-gray-900"
                 }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -124,7 +153,9 @@ export default function Navbar  () {
               <Link
                 to="#pricing"
                 className={`transition-colors ${
-                  isDark ? "text-green-400 hover:text-green-300" : "text-gray-600 hover:text-gray-900"
+                  isDark
+                    ? "text-green-400 hover:text-green-300"
+                    : "text-gray-600 hover:text-gray-900"
                 }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -133,13 +164,16 @@ export default function Navbar  () {
               <Link
                 to="#about"
                 className={`transition-colors ${
-                  isDark ? "text-green-400 hover:text-green-300" : "text-gray-600 hover:text-gray-900"
+                  isDark
+                    ? "text-green-400 hover:text-green-300"
+                    : "text-gray-600 hover:text-gray-900"
                 }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 About
               </Link>
-              <button
+              <Link
+                to={isAuthenticated ? `/dashboard` : `/auth`}
                 variant="outline"
                 size="sm"
                 className={`w-fit transition-colors ${
@@ -148,12 +182,12 @@ export default function Navbar  () {
                     : "border-gray-300 text-gray-700 hover:bg-gray-50"
                 }`}
               >
-                Sign In
-              </button>
+                {isAuthenticated ? `Dashboard` : `Sign In `}
+              </Link>
             </div>
           </div>
         )}
       </div>
     </header>
-  )
+  );
 }
