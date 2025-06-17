@@ -15,6 +15,7 @@ export const registerUser = wrapAsync(async (req, res, next) => {
 export const loginUser = wrapAsync(async (req, res, next) => {
     const {email,password} = req.body
     const {token,user} = await loginUserService(email,password);
+    console.log("token",token);
     req.user = user;
     res.cookie("accessToken",token,cookieOptions)
     res.status(200).json({user:user,"message":"login success"});
