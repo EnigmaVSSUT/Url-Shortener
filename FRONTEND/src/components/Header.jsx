@@ -151,6 +151,7 @@ export default function Header() {
 
               {auth.isAuthenticated ? (
                 <button
+                  onClick={handleLogOutUser}
                   className={`w-fit px-4 py-2 rounded-md border transition-colors ${
                     isDark
                       ? "border-green-500 text-green-400 hover:bg-green-900"
