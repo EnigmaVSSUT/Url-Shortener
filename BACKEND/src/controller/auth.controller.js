@@ -9,7 +9,7 @@ export const registerUser = wrapAsync(async (req, res, next) => {
     const {token,user} = await registerUserService(name,email,password);
     req.user = user;
     res.cookie("accessToken",token,cookieOptions)
-    res.status(200).json("user creation success");
+    res.status(200).json({user:user,"message":"user creation success"});
 });
 
 export const loginUser = wrapAsync(async (req, res, next) => {
