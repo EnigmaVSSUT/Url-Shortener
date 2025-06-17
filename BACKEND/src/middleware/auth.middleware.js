@@ -5,7 +5,7 @@ export const authMiddleware = async(req,res,next) => {
     const token = req.cookies.accessToken;
     if(!token) return res.status(401).json({message:"Unauthorized token not exists"});
     try{
-        const decoded = verifyToken(token);
+        const decoded = await verifyToken(token);
         const user = await findUserById(decoded.id);
         if(!user) return res.status(401).json({message:"Unauthorized user not found"});
         req.user = user;

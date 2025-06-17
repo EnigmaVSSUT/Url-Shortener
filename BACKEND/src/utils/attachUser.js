@@ -5,7 +5,7 @@ export const attachUser = async(req,res,next)=>{
     const token = req.cookies.accessToken;    
     if(!token) return next()
     try{
-        const decoded = verifyToken(token);
+        const decoded = await verifyToken(token);
         const user = await findUserById(decoded.id);
         if(!user) return next()
         req.user = user;
