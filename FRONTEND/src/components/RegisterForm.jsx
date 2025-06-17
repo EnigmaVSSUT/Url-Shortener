@@ -31,7 +31,7 @@ const RegisterForm = ({ state }) => {
     try {
       const data = await registerUser(name, email, password);
       setLoading(false);
-      console.log("Registration successful:", data);
+      console.log("Registration successful:", data.message);
       dispatch(login(data.user));
       navigate({ to: "/dashboard" });
       setLoading(false);
