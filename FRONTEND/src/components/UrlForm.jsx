@@ -126,7 +126,7 @@ const UrlForm = () => {
                 rel="noopener noreferrer"
                 className="text-blue-600 break-all hover:underline"
               >
-                {shortUrl}
+               {shortUrl}
               </a>
               <button
                 onClick={handleCopy}

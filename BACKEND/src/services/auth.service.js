@@ -6,7 +6,10 @@ export const registerUserService = async (name, email, password) => {
     const user = await findUserByEmail(email)
     if(user) throw new ConflictError("User already exists");
     const newUser = await createUser(name,email,password);
+    // console.log("pass 2");
+    // console.log(newUser);
     const token = signToken({id : newUser._id})
+    // console.log("pass 3",token);
     return {token,newUser}
 };
 
